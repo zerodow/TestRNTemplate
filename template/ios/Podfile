@@ -26,11 +26,17 @@ target 'NewRN' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
   target 'NewRNTests' do
     inherit! :complete
     # Pods for testing
   end
-
+  
+  ENVFILES = {
+    'Debug' => '$(PODS_ROOT)/../../.env',
+    'Staging' => '$(PODS_ROOT)/../../.env',
+    'Release' => '$(PODS_ROOT)/../../.env.production',
+  }
   post_install do |installer|
     react_native_post_install(
       installer,
@@ -39,5 +45,12 @@ target 'NewRN' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        if target.name == 'react-native-config'
+          config.build_settings['ENVFILE'] = ENVFILES[config.name]
+        end
+      end
+    end
   end
 end

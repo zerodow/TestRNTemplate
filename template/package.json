@@ -7,7 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "android:run-prod": "react-native run-android --variant=release",
+    "android:run-dev": "ENVFILE=.env react-native run-android --variant=release",
+    "android:apk-prod": "cd android && ENVFILE=.env.production ./gradlew assembleRelease  --stacktrace && cd ..",
+    "android:apk-dev": "cd android && ENVFILE=.env ./gradlew assembleRelease  --stacktrace && cd ..",
+    "android:aab-prod": "cd android && ENVFILE=.env.production ./gradlew bundleRelease  --stacktrace && cd ..",
+    "android:aab-dev": "cd android && ENVFILE=.env ./gradlew bundleRelease  --stacktrace && cd .."
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.1",

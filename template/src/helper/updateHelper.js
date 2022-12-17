@@ -15,10 +15,13 @@ export const CodePushSyncStatus = {
 };
 
 export const updateNative = async () => {
+  if (ENV === 'Development') {
+    return;
+  }
   try {
     const updateData = await VersionCheck.needUpdate();
-    console.log('updateData', updateData);
-    if (updateData?.isNeeded && ENV !== 'Development') {
+    // console.log('updateData', updateData);
+    if (updateData?.isNeeded) {
       Linking.openURL(updateData.storeUrl); // open store if update is needed.
       return;
     }
