@@ -1,13 +1,31 @@
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
+import MainScreen from './screens/MainScreen';
+import TabHome from './screens/TabHome';
+import TabHistory from './screens/TabHistory';
+import TabAccount from './screens/TabAccount';
 
-export default [
+export const MainStack = [
   {
     name: 'Login',
     component: LoginScreen,
   },
   {
-    name: 'Home',
-    component: HomeScreen,
+    name: 'Main',
+    component: MainScreen,
+  },
+];
+
+export const TabStack = [
+  {
+    name: 'TabHome',
+    component: TabHome,
+  },
+  {
+    name: 'TabHistory',
+    component: TabHistory,
+  },
+  {
+    name: 'TabAccount',
+    component: TabAccount,
   },
 ];

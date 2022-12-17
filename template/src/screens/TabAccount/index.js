@@ -1,26 +1,24 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-const LoginScreen = ({navigation}) => {
-  const _onPress = () => {
-    navigation.replace('Main');
+const TabAccount = () => {
+  const navigation = useNavigation();
+
+  const onLogout = () => {
+    navigation.replace('Login');
   };
-
-  const onAutoLogin = () => {};
-
-  const loginAction = () => {};
-
   return (
     <View style={styles.container}>
-      <Text>LoginScreen</Text>
-      <TouchableOpacity style={styles.btn} onPress={_onPress}>
-        <Text>TO LOGIN</Text>
+      <Text>TabAccount</Text>
+      <TouchableOpacity style={styles.btn} onPress={onLogout}>
+        <Text>LOGOUT</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default LoginScreen;
+export default TabAccount;
 
 const styles = StyleSheet.create({
   container: {
